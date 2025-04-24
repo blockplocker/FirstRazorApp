@@ -1,0 +1,44 @@
+﻿@page
+@model FirstRazorApp.Pages.SpringModel
+@{
+    ViewData["Title"] = "Home page";
+    string minText = "Hejsan, från frontendkoden!";
+    string imgSrc = "spring";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <h2>@minText</h2>
+    <h2>@Model.MinText2</h2>
+    <p>idag är det  @DateTime.Now</p>
+
+
+    @{
+        int siffra = 123;
+        int result = siffra * 9;
+    }
+    <p>@siffra $ är värt @result kr</p>
+
+
+    <img src="@Model.ImgSrc" />
+
+    @* <img src="img/@imgSrc"/> *@
+
+
+    @if (DateTime.Now.DayOfWeek == DayOfWeek.Tuesday)
+    {
+        <p>Äntligen tisdag!</p>
+    }
+    else
+    {
+        <p>Trist att det inte är tisdag!</p>
+    }
+
+    @for (int i = 1; i < 10; i++)
+    {
+        <p>Detta är rad @i</p>
+    }
+
+
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
