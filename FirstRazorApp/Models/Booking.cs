@@ -1,42 +1,47 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+ï»¿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using System.Drawing;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 
-namespace FirstRazorApp.Pages
+namespace FirstRazorApp.Models
 {
-    public class MarsModel : PageModel
+    public class Booking
     {
         [BindProperty]
-        [Display(Name ="Förnamn")]
+        [Required]
+        [Display(Name = "FÃ¶rnamn")]
         public string FirstName { get; set; }
         [BindProperty]
+        [Required]
         [Display(Name = "Efternamn")]
         public string LastName { get; set; }
         [BindProperty]
+        [Required]
         [Display(Name = "Res datum")]
+        [DataType(DataType.Date)]
         public DateTime StartDate { get; set; }
         [BindProperty]
+        [Required]
         [Display(Name = "Retur datum")]
+        [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         [BindProperty]
-        [Display(Name = "Antal väskor")]
+        [Required]
+        [Display(Name = "Antal vÃ¤skor")]
         public int NumberOfBags { get; set; }
         [BindProperty]
+        [Required]
         [Display(Name = "Antal liter vatten")]
         public int LitersOfWater { get; set; }
         [BindProperty]
-        [Display(Name = "Antal måltider")]
+        [Required]
+        [Display(Name = "Antal mÃ¥ltider")]
         public int NumberOfMeals { get; set; }
         [BindProperty]
-        [Display(Name = "Lyxhytt")] 
+        [Display(Name = "Lyxhytt")]
         public bool LuxuryRoom { get; set; }
         [BindProperty]
-        [Display(Name = "Färg på hyttväggen")]
+        [Display(Name = "FÃ¤rg pÃ¥ hyttvÃ¤ggen")]
         public string RoomColor { get; set; }
-
-        public void OnGet()
-        {
-        }
     }
 }

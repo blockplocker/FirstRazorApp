@@ -1,12 +1,81 @@
 ﻿@page
+@using FirstRazorApp.Extenstions
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Boka resa till mars";
+    DateTime today = DateTime.Today;
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>idag är det  @DateTime.Today</p>
-
-
 </div>
+
+
+
+
+@if (Model.Booking == null)
+{
+
+    <h1>Boka resa till Mars</h1>
+
+    <form method="post">
+
+        <label asp-for="Booking.FirstName"></label>
+        <input asp-for="Booking.FirstName" />
+        <span asp-validation-for="Booking.FirstName"></span>
+        <br />
+        <label asp-for="Booking.LastName"></label>
+        <input asp-for="Booking.LastName" />
+        <span asp-validation-for="Booking.LastName"></span>
+        <br />
+        <label asp-for="Booking.StartDate"></label>
+        <input asp-for="Booking.StartDate" min="@today" value="@today" />
+        <span asp-validation-for="Booking.StartDate"></span>
+        <br />
+        <label asp-for="Booking.EndDate"></label>
+        <input asp-for="Booking.EndDate" min="@today" value="@today" />
+        <span asp-validation-for="Booking.EndDate"></span>
+        <br />
+        <label asp-for="Booking.NumberOfBags"></label>
+        <input asp-for="Booking.NumberOfBags" />
+        <span asp-validation-for="Booking.NumberOfBags"></span>
+        <br />
+        <label asp-for="Booking.LitersOfWater"></label>
+        <input asp-for="Booking.LitersOfWater" />
+        <span asp-validation-for="Booking.LitersOfWater"></span>
+        <br />
+        <label asp-for="Booking.NumberOfMeals"></label>
+        <input asp-for="Booking.NumberOfMeals" />
+        <span asp-validation-for="Booking.NumberOfMeals"></span>
+        <br />
+        <label asp-for="Booking.LuxuryRoom"></label>
+        <input asp-for="Booking.LuxuryRoom" />
+        <br />
+        @* <label asp-for="Booking.RoomColor"></label> *@
+        @* <input asp-for="Booking.RoomColor" type="color" /> *@
+
+        <br />
+        <input type="submit" />
+    </form>
+}
+
+
+@if (Model.Booking != null)
+{
+    int days = (Model.Booking.EndDate - Model.Booking.StartDate).Days;
+    int TotalPrice = (days * 24000) + (Model.Booking.NumberOfBags * 5000) + (Model.Booking.LitersOfWater * 150) + (Model.Booking.NumberOfMeals * 495) + (Model.Booking.LuxuryRoom ? 150000 : 0);
+
+    <p> Hej @Model.Booking.FirstName @Model.Booking.LastName Booking confirmation</p>
+    <p>Dagar: @days price @(days * 24000) kr</p>
+    <p>Väskor: @Model.Booking.NumberOfBags price @(Model.Booking.NumberOfBags * 5000) kr</p>
+    <p>Liter vatten: @Model.Booking.LitersOfWater price @(Model.Booking.LitersOfWater * 150) kr</p>
+    <p>Måltider: @Model.Booking.NumberOfMeals price @(Model.Booking.NumberOfMeals * 495) kr</p>
+    <p>Lyxhytt: @(Model.Booking.LuxuryRoom ? "ja" : "nej") price @(Model.Booking.LuxuryRoom ? 150000 : 0) kr</p>
+
+    <h1>Total kostnad: @Model.Booking?.CalculatePrice() kr</h1>
+
+
+
+    <a asp-route-booking="@null">Redo</a>
+
+}
