@@ -1,0 +1,77 @@
+﻿@page
+@model FirstRazorApp.Pages.BootstrapModel
+@{
+    ViewData["Title"] = "Bootstrap";
+ }
+
+ <div class="text-center">
+     <h1 class="display-4">Welcome</h1>
+    <p class="lead">This is a simple example of using Bootstrap in Razor Pages.</p>
+ </div>
+
+
+ <div>
+     <div class="border">Text som syns!</div>
+    <div class="d-none d-sm-block border">Small</div>
+    <div class="d-none d-md-block border">Medium</div>
+    <div class="d-none d-lg-block border">Large</div>
+    <div class="d-none d-xl-block border">xLarge</div>
+
+    <hr class="m-5"/> 
+
+    <div class="row">
+        <div class="col border">Kolumn 1</div>
+        <div class="col border">Kolumn 2</div>
+        <div class="col border">Kolumn 3</div>
+    </div>
+
+    <br />  
+    
+    <div class="row" >
+        <div class="col-md-4 col-lg-2 border">Kolumn 1</div>
+        <div class="col-md-6 col-lg-2 border">Kolumn 2</div>
+        <div class="col-md-2 col-lg-8 border">Kolumn 3</div>
+    </div>
+    
+    <hr class="m-5"/>
+
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr> 
+                <th>Förnamn</th>
+                <th>Efternamn</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Mikael</td>
+                <td>Engström</td>
+                <td>micke@zocom.se</td>
+            </tr>
+            <tr>
+                <td>Johan</td>
+                <td>Johansson</td>
+                <td>johan@zocom.se</td>
+            </tr>
+            <tr>
+                <td>Mikael</td>
+                <td>Engström</td>
+                <td>micke@zocom.se</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="alert-success">
+        <strong>Lysande</strong> Du loggade in!
+    </div>
+
+    <br />
+
+    <div class="card">
+        <div class="card-header"><strong>Cykelpump</strong></div>
+        <div class="card-body">Bra för cyklar <br /> luftmadrasser <br /> Med mera</div>
+        <div class="card-footer text-danger">199kr</div>
+    </div>
+ </div>
